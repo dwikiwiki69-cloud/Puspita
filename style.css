@@ -1,89 +1,1345 @@
+/* =====================================
+   RESET
+===================================== */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
 }
+
+
+/* =====================================
+   COLOR
+===================================== */
+
+:root {
+
+  --paper: #f4efe7;
+
+  --paper-light: #faf7f1;
+
+  --brown: #4a2b1e;
+
+  --brown-soft: #6d4b3c;
+
+  --burgundy: #83183f;
+
+  --burgundy-dark: #5a1730;
+
+  --pink: #b94c70;
+
+  --muted: #8d7c70;
+
+  --line: rgba(74, 43, 30, 0.22);
+
+  --shadow: rgba(63, 35, 24, 0.16);
+
+}
+
+
+/* =====================================
+   BODY
+===================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
   min-height: 100vh;
-  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-  padding: 20px;
+
+  background:
+
+    radial-gradient(
+      circle at 15% 25%,
+      rgba(185, 76, 112, 0.06),
+      transparent 24%
+    ),
+
+    radial-gradient(
+      circle at 85% 75%,
+      rgba(74, 43, 30, 0.06),
+      transparent 26%
+    ),
+
+    var(--paper);
+
+  color: var(--brown);
+
+  font-family: "Montserrat", sans-serif;
+
+  overflow-x: hidden;
+
 }
 
-.card {
-  background: rgba(255, 255, 255, 0.9);
-  padding: 30px 20px;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  max-width: 400px;
-  width: 100%;
+
+/* =====================================
+   PAPER TEXTURE
+===================================== */
+
+body::before {
+
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0.18;
+
+  background-image:
+
+    radial-gradient(
+      rgba(74, 43, 30, 0.28) 0.6px,
+      transparent 0.6px
+    );
+
+  background-size: 5px 5px;
+
+  mix-blend-mode: multiply;
+
+  z-index: 20;
+
 }
 
-.img-container img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid #ff6b81;
-  margin-bottom: 15px;
+
+/* =====================================
+   PAGE
+===================================== */
+
+.page {
+
+  position: relative;
+
+  min-height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 55px 24px;
+
 }
 
-h1 {
-  font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 10px;
+
+/* =====================================
+   FLOWERS
+===================================== */
+
+.flower-canopy {
+
+  position: absolute;
+
+  top: 0;
+
+  left: 50%;
+
+  width: min(1180px, 96vw);
+
+  height: 165px;
+
+  transform: translateX(-50%);
+
+  display: flex;
+
+  justify-content: space-around;
+
+  align-items: flex-start;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: 3;
+
 }
 
-p {
-  font-size: 0.95rem;
-  color: #666;
+
+.flower-canopy span {
+
+  color: var(--burgundy);
+
+  font-size: clamp(60px, 8vw, 110px);
+
+  line-height: 0.65;
+
+  text-shadow:
+
+    12px 20px 0 rgba(131, 24, 63, 0.16),
+
+    -14px 38px 0 rgba(185, 76, 112, 0.12);
+
+  transform-origin: top center;
+
+  animation: flowerSway 5s ease-in-out infinite alternate;
+
+}
+
+
+.flower-canopy span:nth-child(2n) {
+
+  font-size: clamp(45px, 6vw, 85px);
+
+  animation-delay: -1.5s;
+
+}
+
+
+.flower-canopy span:nth-child(3n) {
+
+  color: var(--pink);
+
+  animation-delay: -3s;
+
+}
+
+
+@keyframes flowerSway {
+
+  from {
+
+    transform:
+      rotate(-3deg)
+      translateY(-2px);
+
+  }
+
+  to {
+
+    transform:
+      rotate(3deg)
+      translateY(4px);
+
+  }
+
+}
+
+
+/* =====================================
+   PAPER GRAIN
+===================================== */
+
+.paper-grain {
+
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+
+    linear-gradient(
+      90deg,
+      transparent 0 49%,
+      rgba(74, 43, 30, 0.025) 50%,
+      transparent 51%
+    ),
+
+    linear-gradient(
+      0deg,
+      transparent 0 49%,
+      rgba(74, 43, 30, 0.02) 50%,
+      transparent 51%
+    );
+
+  background-size: 8px 8px;
+
+}
+
+
+/* =====================================
+   MAIN CARD
+===================================== */
+
+.birthday-card {
+
+  position: relative;
+
+  width: min(1050px, 100%);
+
+  min-height: 690px;
+
+  padding: 42px 55px 28px;
+
+  background:
+
+    linear-gradient(
+      rgba(255,255,255,0.28),
+      rgba(255,255,255,0.28)
+    ),
+
+    var(--paper-light);
+
+  border: 1px solid
+    rgba(74, 43, 30, 0.12);
+
+  box-shadow:
+
+    0 30px 70px var(--shadow),
+
+    0 4px 15px
+      rgba(74, 43, 30, 0.05);
+
+  overflow: hidden;
+
+  animation: cardIn 1s ease both;
+
+}
+
+
+@keyframes cardIn {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      translateY(24px);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+  }
+
+}
+
+
+/* =====================================
+   BORDER
+===================================== */
+
+.birthday-card::before {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 15px;
+
+  border: 1px solid
+    rgba(74, 43, 30, 0.13);
+
+  pointer-events: none;
+
+}
+
+
+.birthday-card::after {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 20px;
+
+  border: 1px dashed
+    rgba(74, 43, 30, 0.13);
+
+  pointer-events: none;
+
+}
+
+
+/* =====================================
+   TOP NOTE
+===================================== */
+
+.top-note {
+
+  position: relative;
+
+  z-index: 5;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.22em;
+
+  font-size: 8px;
+
+  color: var(--muted);
+
   margin-bottom: 25px;
+
 }
+
+
+.heart {
+
+  color: var(--burgundy);
+
+  font-size: 14px;
+
+}
+
+
+/* =====================================
+   HERO
+===================================== */
+
+.hero-layout {
+
+  position: relative;
+
+  z-index: 5;
+
+  display: grid;
+
+  grid-template-columns: 42% 58%;
+
+  align-items: center;
+
+  gap: 42px;
+
+  min-height: 530px;
+
+}
+
+
+/* =====================================
+   PHOTO SIDE
+===================================== */
+
+.photo-side {
+
+  position: relative;
+
+  display: flex;
+
+  justify-content: center;
+
+  padding: 30px 10px;
+
+}
+
+
+/* =====================================
+   PHOTO FRAME
+===================================== */
+
+.photo-frame {
+
+  position: relative;
+
+  width: min(330px, 100%);
+
+  padding: 12px 12px 42px;
+
+  background: #fffdf8;
+
+  box-shadow:
+
+    0 22px 38px
+      rgba(74, 43, 30, 0.18);
+
+  transform: rotate(-3deg);
+
+  transition:
+    transform 0.45s ease;
+
+}
+
+
+.photo-frame:hover {
+
+  transform:
+    rotate(0deg)
+    translateY(-5px);
+
+}
+
+
+.photo-frame::before {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 6px;
+
+  border: 1px solid
+    rgba(74, 43, 30, 0.13);
+
+  pointer-events: none;
+
+}
+
+
+.photo-frame img {
+
+  display: block;
+
+  width: 100%;
+
+  aspect-ratio: 4 / 5;
+
+  object-fit: cover;
+
+  object-position: center;
+
+  filter:
+    saturate(0.88)
+    contrast(0.97);
+
+}
+
+
+/* =====================================
+   PHOTO CAPTION
+===================================== */
+
+.photo-caption {
+
+  position: absolute;
+
+  bottom: 10px;
+
+  left: 0;
+
+  right: 0;
+
+  text-align: center;
+
+  color: var(--brown);
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 14px;
+
+  line-height: 1;
+
+}
+
+
+.photo-caption span {
+
+  display: block;
+
+  font-size: 11px;
+
+  font-style: italic;
+
+  color: var(--muted);
+
+  margin-bottom: 2px;
+
+}
+
+
+.photo-caption strong {
+
+  font-weight: 600;
+
+}
+
+
+/* =====================================
+   TAPE
+===================================== */
+
+.tape {
+
+  position: absolute;
+
+  width: 78px;
+
+  height: 25px;
+
+  top: -13px;
+
+  background:
+    rgba(217, 191, 155, 0.58);
+
+  z-index: 3;
+
+}
+
+
+.tape-left {
+
+  left: 28px;
+
+  transform:
+    rotate(-7deg);
+
+}
+
+
+.tape-right {
+
+  right: 28px;
+
+  transform:
+    rotate(8deg);
+
+}
+
+
+/* =====================================
+   FLOWER DOODLE
+===================================== */
+
+.flower-doodle {
+
+  position: absolute;
+
+  color: var(--burgundy);
+
+  font-size: 54px;
+
+  opacity: 0.75;
+
+  font-family: serif;
+
+}
+
+
+.flower-left {
+
+  left: 0;
+
+  bottom: 18px;
+
+  transform:
+    rotate(-18deg);
+
+}
+
+
+.flower-right {
+
+  right: -2px;
+
+  top: 25px;
+
+  color: var(--pink);
+
+  transform:
+    rotate(18deg);
+
+}
+
+
+/* =====================================
+   TEXT
+===================================== */
+
+.text-side {
+
+  padding: 20px 25px 10px;
+
+}
+
+
+.eyebrow {
+
+  font-size: 9px;
+
+  letter-spacing: 0.36em;
+
+  color: var(--burgundy);
+
+  margin-bottom: 16px;
+
+}
+
+
+/* =====================================
+   TITLE
+===================================== */
+
+#title {
+
+  color: var(--brown);
+
+  line-height: 0.72;
+
+  margin-bottom: 22px;
+
+}
+
+
+#title span {
+
+  display: block;
+
+  font-family:
+    "Italianno",
+    cursive;
+
+  font-size:
+    clamp(60px, 8vw, 95px);
+
+  font-weight: 400;
+
+  margin-left: 22px;
+
+  color: var(--burgundy);
+
+  transform:
+    rotate(-3deg);
+
+}
+
+
+#title strong {
+
+  display: block;
+
+  font-family:
+    "DM Serif Display",
+    serif;
+
+  font-size:
+    clamp(65px, 9vw, 112px);
+
+  font-weight: 400;
+
+  letter-spacing: -0.045em;
+
+  text-transform: uppercase;
+
+}
+
+
+/* =====================================
+   SCRIPT
+===================================== */
+
+.script-line {
+
+  font-family:
+    "Italianno",
+    cursive;
+
+  color: var(--brown-soft);
+
+  font-size: 29px;
+
+  margin-left: 7px;
+
+}
+
+
+/* =====================================
+   INTRO
+===================================== */
+
+.intro {
+
+  max-width: 450px;
+
+  margin: 23px 0 18px;
+
+  color: var(--brown-soft);
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 21px;
+
+  line-height: 1.35;
+
+}
+
+
+/* =====================================
+   DIVIDER
+===================================== */
+
+.divider {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  max-width: 380px;
+
+  margin-bottom: 22px;
+
+}
+
+
+.divider span {
+
+  height: 1px;
+
+  flex: 1;
+
+  background: var(--line);
+
+}
+
+
+.divider b {
+
+  color: var(--burgundy);
+
+  font-family: serif;
+
+  font-size: 18px;
+
+  font-weight: 400;
+
+}
+
+
+/* =====================================
+   BUTTON
+===================================== */
 
 .btn-group {
+
   display: flex;
-  justify-content: center;
-  gap: 15px;
+
+  align-items: center;
+
+  gap: 12px;
+
+  min-height: 52px;
+
   position: relative;
+
 }
+
 
 button {
-  padding: 12px 20px;
-  font-size: 0.95rem;
-  font-weight: bold;
+
   border: none;
-  border-radius: 25px;
+
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.3s ease;
+
+  font-family:
+    "Montserrat",
+    sans-serif;
+
+  transition:
+
+    transform 0.25s ease,
+
+    box-shadow 0.25s ease,
+
+    background 0.25s ease;
+
 }
+
+
+/* =====================================
+   MAIN BUTTON
+===================================== */
 
 #btnUtama {
-  background-color: #ff6b81;
-  color: white;
-  box-shadow: 0 4px 10px rgba(255, 107, 129, 0.4);
+
+  padding:
+    14px 25px;
+
+  color: #fffaf5;
+
+  background:
+    var(--burgundy);
+
+  border-radius: 2px;
+
+  text-transform:
+    uppercase;
+
+  letter-spacing:
+    0.14em;
+
+  font-size: 10px;
+
+  box-shadow:
+
+    0 10px 20px
+    rgba(131, 24, 63, 0.2);
+
 }
+
+
+#btnUtama span {
+
+  font-size: 15px;
+
+  margin-left: 5px;
+
+}
+
 
 #btnUtama:hover {
-  background-color: #ff4757;
-  transform: scale(1.05);
+
+  background:
+    var(--burgundy-dark);
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+
+    0 14px 26px
+    rgba(131, 24, 63, 0.25);
+
 }
+
+
+/* =====================================
+   RUN BUTTON
+===================================== */
 
 #btnLari {
-  background-color: #a4b0be;
-  color: white;
+
+  padding:
+    13px 17px;
+
+  color:
+    var(--brown-soft);
+
+  background:
+    transparent;
+
+  border:
+    1px solid
+    rgba(74, 43, 30, 0.24);
+
+  border-radius: 2px;
+
+  font-size: 9px;
+
+  text-transform:
+    uppercase;
+
+  letter-spacing:
+    0.08em;
+
   position: relative;
-  touch-action: manipulation;
-  transition: transform 0.15s ease-out;
+
+  touch-action:
+    manipulation;
+
+  transition:
+    transform 0.15s ease-out;
+
 }
 
-/* Kustomisasi Tampilan Foto SweetAlert agar Utuh & Tidak Terpotong */
+
+/* =====================================
+   SCROLL HINT
+===================================== */
+
+.scroll-hint {
+
+  margin-top: 28px;
+
+  font-size: 8px;
+
+  text-transform:
+    uppercase;
+
+  letter-spacing:
+    0.25em;
+
+  color:
+    #a8998d;
+
+}
+
+
+/* =====================================
+   FOOTER
+===================================== */
+
+.card-footer {
+
+  position: relative;
+
+  z-index: 5;
+
+  margin-top: 22px;
+
+  padding-top: 15px;
+
+  border-top:
+    1px solid var(--line);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.22em;
+
+  font-size: 8px;
+
+  color: var(--muted);
+
+}
+
+
+.card-footer span:last-child {
+
+  color:
+    var(--burgundy);
+
+  font-size: 15px;
+
+}
+
+
+/* =====================================
+   SWEET ALERT
+===================================== */
+
+.swal2-popup {
+
+  width:
+    min(460px, calc(100% - 30px))
+    !important;
+
+  padding:
+    30px !important;
+
+  border-radius:
+    2px !important;
+
+  background:
+    #faf7f1 !important;
+
+  color:
+    var(--brown) !important;
+
+  box-shadow:
+    0 25px 70px
+    rgba(50, 25, 15, 0.25)
+    !important;
+
+}
+
+
+.swal2-title {
+
+  font-family:
+    "DM Serif Display",
+    serif !important;
+
+  font-weight:
+    400 !important;
+
+  color:
+    var(--brown) !important;
+
+}
+
+
+.swal2-html-container {
+
+  font-family:
+    "Cormorant Garamond",
+    serif !important;
+
+  font-size:
+    20px !important;
+
+  color:
+    var(--brown-soft) !important;
+
+}
+
+
 .sweetalert-img-fit {
-  object-fit: contain !important;
-  border-radius: 12px;
-  max-width: 100% !important;
+
+  object-fit:
+    contain !important;
+
+  border-radius:
+    0 !important;
+
+  max-width:
+    100% !important;
+
+  max-height:
+    330px !important;
+
+  box-shadow:
+    0 10px 24px
+    rgba(74, 43, 30, 0.12);
+
+}
+
+
+.swal2-confirm {
+
+  background:
+    var(--burgundy) !important;
+
+  border-radius:
+    2px !important;
+
+  font-family:
+    "Montserrat",
+    sans-serif !important;
+
+  font-size:
+    10px !important;
+
+  letter-spacing:
+    0.12em !important;
+
+  text-transform:
+    uppercase !important;
+
+  box-shadow:
+    none !important;
+
+}
+
+
+/* =====================================
+   TABLET
+===================================== */
+
+@media (max-width: 800px) {
+
+  .page {
+
+    padding:
+      45px 14px 30px;
+
+    align-items:
+      flex-start;
+
+  }
+
+
+  .flower-canopy {
+
+    height:
+      125px;
+
+  }
+
+
+  .birthday-card {
+
+    padding:
+      32px 25px 22px;
+
+  }
+
+
+  .hero-layout {
+
+    grid-template-columns:
+      1fr;
+
+    gap:
+      8px;
+
+  }
+
+
+  .photo-side {
+
+    padding:
+      32px 15px 10px;
+
+  }
+
+
+  .photo-frame {
+
+    width:
+      min(280px, 88vw);
+
+  }
+
+
+  .text-side {
+
+    text-align:
+      center;
+
+    padding:
+      10px 8px 20px;
+
+  }
+
+
+  .intro {
+
+    margin-left:
+      auto;
+
+    margin-right:
+      auto;
+
+  }
+
+
+  .divider {
+
+    margin-left:
+      auto;
+
+    margin-right:
+      auto;
+
+  }
+
+
+  .btn-group {
+
+    justify-content:
+      center;
+
+    flex-wrap:
+      wrap;
+
+  }
+
+
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 450px) {
+
+  .top-note {
+
+    font-size:
+      6px;
+
+    letter-spacing:
+      0.14em;
+
+  }
+
+
+  .birthday-card {
+
+    padding:
+      28px 18px 20px;
+
+  }
+
+
+  .photo-frame {
+
+    width:
+      min(245px, 82vw);
+
+  }
+
+
+  #title span {
+
+    font-size:
+      60px;
+
+  }
+
+
+  #title strong {
+
+    font-size:
+      65px;
+
+  }
+
+
+  .script-line {
+
+    font-size:
+      25px;
+
+  }
+
+
+  .intro {
+
+    font-size:
+      19px;
+
+  }
+
+
+  .btn-group {
+
+    flex-direction:
+      column;
+
+  }
+
+
+  #btnUtama,
+  #btnLari {
+
+    width:
+      min(240px, 90%);
+
+  }
+
+
+  .card-footer {
+
+    font-size:
+      6px;
+
+  }
+
+}
+
+
+/* =====================================
+   REDUCED MOTION
+===================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    scroll-behavior:
+      auto !important;
+
+    transition-duration:
+      0.01ms !important;
+
+  }
+
 }

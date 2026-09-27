@@ -1,61 +1,188 @@
+/* ==========================================
+   TOMBOL "ENGGAK MAU"
+========================================== */
+
 function kaburButton() {
-  const btnLari = document.getElementById('btnLari');
-  
-  // Menghitung posisi acak agar tombol kabur saat diarahkan kursor
-  const x = Math.floor(Math.random() * 200) - 100;
-  const y = Math.floor(Math.random() * 200) - 100;
-  
-  btnLari.style.transform = `translate(${x}px, ${y}px)`;
+
+  const btnLari =
+    document.getElementById("btnLari");
+
+  if (!btnLari) return;
+
+
+  // Posisi random
+  const x =
+    Math.floor(Math.random() * 240) - 120;
+
+  const y =
+    Math.floor(Math.random() * 180) - 90;
+
+
+  btnLari.style.transform =
+    `translate(${x}px, ${y}px)`;
+
 }
 
+
+/* ==========================================
+   MULAI PESAN
+========================================== */
+
 function mulaiPesan() {
-  // 1. Memutar Musik secara otomatis saat tombol diklik
-  const bgm = document.getElementById('bgm');
-  
+
+  const bgm =
+    document.getElementById("bgm");
+
+
+  /* ==============================
+     PLAY MUSIC
+  ============================== */
+
   if (bgm) {
+
+    bgm.volume = 0.45;
+
     bgm.play().catch((error) => {
-      console.log("Autoplay diblokir oleh browser:", error);
+
+      console.log(
+        "Musik belum dapat diputar:",
+        error
+      );
+
     });
+
   }
 
-  // 2. Memunculkan Pesan Bertahap Menggunakan SweetAlert2
-  // Tahap 1: Foto 2
+
+  /* ==============================
+     POPUP 1
+  ============================== */
+
   Swal.fire({
-    title: 'Halo Puspitaaaa! 🎉',
-    text: 'Selamat bertambah usia yaaa!',
-    imageUrl: 'foto2.jpeg',
-    imageWidth: 150,
-    imageHeight: 150,
-    imageAlt: 'Foto Ulang Tahun',
-    confirmButtonText: 'Lanjut ❤️',
-    allowOutsideClick: false
+
+    title:
+      "Halo Puspitaaaa! ♡",
+
+    text:
+      "Selamat bertambah usia yaaa! Ada sedikit kejutan yang aku siapkan buat kamu.",
+
+    imageUrl:
+      "foto2.jpeg",
+
+    imageWidth:
+      240,
+
+    imageHeight:
+      300,
+
+    imageAlt:
+      "Foto ulang tahun",
+
+    customClass: {
+
+      image:
+        "sweetalert-img-fit"
+
+    },
+
+    confirmButtonText:
+      "Lanjut ♡",
+
+    allowOutsideClick:
+      false
+
   }).then((result) => {
-    if (result.isConfirmed) {
-      // Tahap 2: Foto 3
+
+
+    if (!result.isConfirmed)
+      return;
+
+
+    /* ==============================
+       POPUP 2
+    ============================== */
+
+    Swal.fire({
+
+      title:
+        "Doa Terbaik Buat Kamu ✨",
+
+      text:
+        "Semoga panjang umur, sehat selalu, dimudahkan dalam setiap langkah, dan semua hal baik yang kamu impikan perlahan menjadi nyata.",
+
+      imageUrl:
+        "foto3.jpeg",
+
+      imageWidth:
+        240,
+
+      imageHeight:
+        300,
+
+      imageAlt:
+        "Foto ulang tahun",
+
+      customClass: {
+
+        image:
+          "sweetalert-img-fit"
+
+      },
+
+      confirmButtonText:
+        "Masih ada lagi 🎁",
+
+      allowOutsideClick:
+        false
+
+    }).then((result) => {
+
+
+      if (!result.isConfirmed)
+        return;
+
+
+      /* ==============================
+         POPUP 3
+      ============================== */
+
       Swal.fire({
-        title: 'Doa Terbaik Buat Kamu ✨',
-        text: 'Semoga panjang umur, sehat selalu, dan semua cita-citamu tercapai!',
-        imageUrl: 'foto3.jpeg',
-        imageWidth: 150,
-        imageHeight: 150,
-        imageAlt: 'Foto Ulang Tahun',
-        confirmButtonText: 'Lanjut Lagi 🎁',
-        allowOutsideClick: false
-      }).then((result) => {
-        if (result.isConfirmed) {
-          // Tahap 3: Foto 7
-          Swal.fire({
-            title: 'I Have Something For You 💖',
-            text: 'Jangan lupa senyum hari ini ya!',
-            imageUrl: 'foto7.jpeg',
-            imageWidth: 150,
-            imageHeight: 150,
-            imageAlt: 'Foto Ulang Tahun',
-            confirmButtonText: 'Selesai 🥰',
-            allowOutsideClick: false
-          });
-        }
+
+        title:
+          "I Have Something For You 💖",
+
+        text:
+          "Jangan lupa senyum hari ini. Kamu pantas mendapatkan banyak sekali kebahagiaan.",
+
+        imageUrl:
+          "foto7.jpeg",
+
+        imageWidth:
+          240,
+
+        imageHeight:
+          300,
+
+        imageAlt:
+          "Foto ulang tahun",
+
+        customClass: {
+
+          image:
+            "sweetalert-img-fit"
+
+        },
+
+        confirmButtonText:
+          "Selesai 🥰",
+
+        allowOutsideClick:
+          false
+
       });
-    }
+
+    });
+
   });
+
 }

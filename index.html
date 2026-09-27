@@ -3,31 +3,201 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday! 🎉</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- SweetAlert2 untuk Popup Ucapan Cantik -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
-<body>
-  <div class="card">
-    <div class="img-container">
-      <!-- Menggunakan foto1.jpeg sebagai foto utama -->
-      <img id="profile-img" src="foto1.jpeg" alt="Birthday Person">
-    </div>
-    <h1 id="title">Selamat Ulang Tahun! 🎂</h1>
-    <p id="description">Ada pesan spesial nih buat kamu. Klik tombol di bawah ya!</p>
-    
-    <div class="btn-group">
-      <button id="btnUtama" onclick="mulaiPesan()">Buka Pesan ❤️</button>
-      <button id="btnLari" onmouseover="kaburButton()">Enggak Mau 😜</button>
-    </div>
-  </div>
 
-  <!-- Audio Musik Latar -->
-  <audio id="bgm" loop>
-    <source src="ssstik.io_1790274541664.mp3" type="audio/mpeg">
-  </audio>
+  <title>Happy Birthday, Puspita ♡</title>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Italianno&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- SweetAlert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="page">
+
+    <!-- Bunga dekorasi bagian atas -->
+    <div class="flower-canopy">
+      <span>✿</span>
+      <span>❀</span>
+      <span>✿</span>
+      <span>❁</span>
+      <span>✿</span>
+      <span>❀</span>
+      <span>✿</span>
+      <span>❁</span>
+    </div>
+
+    <!-- Efek tekstur kertas -->
+    <div class="paper-grain"></div>
+
+    <section class="birthday-card">
+
+      <!-- Header kecil -->
+      <div class="top-note">
+        <span>made with love</span>
+        <span class="heart">♡</span>
+        <span>just for you</span>
+      </div>
+
+
+      <div class="hero-layout">
+
+        <!-- =========================
+             FOTO
+        ========================== -->
+        <div class="photo-side">
+
+          <div class="photo-frame">
+
+            <!-- Tape -->
+            <div class="tape tape-left"></div>
+            <div class="tape tape-right"></div>
+
+            <img
+              id="profile-img"
+              src="foto1.jpeg"
+              alt="Foto Puspita"
+            >
+
+            <div class="photo-caption">
+              <span>one of my</span>
+              <strong>favorite people</strong>
+            </div>
+
+          </div>
+
+          <!-- Ornamen bunga -->
+          <div class="flower-doodle flower-left">
+            ❀
+          </div>
+
+          <div class="flower-doodle flower-right">
+            ✿
+          </div>
+
+        </div>
+
+
+        <!-- =========================
+             TEXT
+        ========================== -->
+        <div class="text-side">
+
+          <p class="eyebrow">
+            A LITTLE BIRTHDAY LETTER
+          </p>
+
+
+          <h1 id="title">
+
+            <span>Happy</span>
+
+            <strong>
+              Birthday
+            </strong>
+
+          </h1>
+
+
+          <div class="script-line">
+            to someone very special ♡
+          </div>
+
+
+          <p id="description" class="intro">
+
+            Ada pesan kecil yang aku siapkan
+            khusus buat kamu.
+            Buka pelan-pelan ya...
+
+          </p>
+
+
+          <!-- Garis -->
+          <div class="divider">
+
+            <span></span>
+
+            <b>♡</b>
+
+            <span></span>
+
+          </div>
+
+
+          <!-- Button -->
+          <div class="btn-group">
+
+            <button
+              id="btnUtama"
+              onclick="mulaiPesan()"
+            >
+              Buka Pesan
+              <span>♡</span>
+            </button>
+
+
+            <button
+              id="btnLari"
+              onmouseover="kaburButton()"
+              onclick="kaburButton()"
+            >
+              Enggak Mau 😜
+            </button>
+
+          </div>
+
+
+          <p class="scroll-hint">
+            there's something waiting for you ↓
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- Footer -->
+      <div class="card-footer">
+
+        <span>
+          with all my heart
+        </span>
+
+        <span>
+          27 • 09 • 2026
+        </span>
+
+        <span>
+          ♡
+        </span>
+
+      </div>
+
+    </section>
+
+
+    <!-- Musik -->
+    <audio id="bgm" loop>
+
+      <source
+        src="ssstik.io_1790274541664.mp3"
+        type="audio/mpeg"
+      >
+
+    </audio>
+
+  </main>
+
 
   <script src="script.js"></script>
+
 </body>
 </html>
